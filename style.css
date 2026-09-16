@@ -1,0 +1,168 @@
+body {
+    margin: 0px;
+    font-family: 'Proto Nerd Font', 'Fira Code', monospace;
+    font-size: 17px;
+}
+
+.container {
+    max-width: 800px; /* Limite la largeur du texte */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px; /* Sécurité pour les petits écrans mobiles */
+    padding-right: 20px;
+}
+
+.logo {
+    display: block;
+    width: 200px;
+    height: auto;
+}
+
+/* Resize images */
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0em 1em;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 1px 1px rgba(102,119,136,0.55);
+    text-shadow: 0 1px 1px rgba(51,68,85,0.3);
+    white-space: nowrap;
+    border-bottom: solid 3px black;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0.5em;
+    margin: 0;
+    padding-left: 0px;
+}
+
+.nav-links li {
+    display: flex; /* Assure que le lien occupe toute la hauteur */
+    font-size: 20px;
+}
+
+/* Modification des liens pour l'animation */
+.nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    padding: 8px 12px;
+    display: inline-block;
+    overflow: hidden; /* Masque le fond quand il est en bas */
+    transition: color 0.2s ease;
+}
+
+/* Le fond gris transparent masqué au départ */
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+    
+    transform-origin: bottom; /* Fixe l'ancrage en bas */
+    transform: scaleY(0);     /* Réduit la hauteur à 0 */
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Déploiement du fond au survol */
+.nav-links a:hover::before {
+    transform: scaleY(1);
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+/* Style appliqué automatiquement au bouton de la page active */
+.nav-links a.active {
+    color: black; /* Garde la couleur du texte noire (ou change-la si tu préfères) */
+    border: 3px solid black; /* Ajoute un contour noir de 2 pixels */
+    font-weight: bold;
+}
+
+/* Empêche l'animation hover de masquer le fond actif si on le survole */
+.nav-links a.active::before {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+.presentation {
+    display: flex;
+    gap: 20px;
+}
+
+.screenshot {
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; /* Ajuster selon besoin */
+}
+
+/* Resize images */
+.screenshot img {
+    width: 100%;
+    height: auto;
+}
+
+.image {
+    height: auto;
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    width: 50%; /* Ajuster selon besoin */
+}
+
+/* Resize images */
+.image img {
+    width: auto;
+    height: auto;
+    max-width: 180px;
+    max-height: 180px;
+}
